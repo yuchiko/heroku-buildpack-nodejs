@@ -312,6 +312,10 @@ build_dependencies() {
     npm_node_modules "$BUILD_DIR"
   fi
 
+  if [[ -f "$BUILD_DIR/angular.json" ]]; then
+    chmod -R +w "$BUILD_DIR/node_modules/@angular"
+  fi
+
   mtime "modules.time.cache.$cache_status" "${start}"
 
   meta_set "build-step" "build-script"
